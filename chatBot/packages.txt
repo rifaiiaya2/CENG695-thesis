@@ -1,0 +1,9 @@
+uvicorn
+nltk( console python:import nltk ,nltk.download())
+numpy
+pandas
+sklearn (TfidfVectorizer)
+fastapi
+pymongo
+re (regex)
+date

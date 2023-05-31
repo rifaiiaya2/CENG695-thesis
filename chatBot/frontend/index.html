@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Bot</title>
+
+    <link rel="stylesheet" href="static/css/chat.css" />
+    <link rel="stylesheet" href="static/css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+      <button id="chat-button" type="button" class="collapsible">
+        Chat with us!
+        <i
+          id="chat-icon"
+          style="color: #fff"
+          class="fa fa-fw fa-comments-o"
+        ></i>
+      </button>
+
+      <div class="content">
+        <div class="full-chat-block">
+          <!-- Message Container -->
+          <div class="outer-container">
+            <div class="chat-container">
+              <!-- Messages -->
+              <div id="chatbox">
+                <h5 id="chat-timestamp"></h5>
+                <p id="botStarterMessage" class="botText">
+                  <span>Loading...</span>
+                </p>
+              </div>
+
+              <!-- User input box -->
+              <div class="chat-bar-input-block">
+                <div id="userInput">
+                  <input
+                    id="textInput"
+                    class="input-box"
+                    type="text"
+                    name="msg"
+                    placeholder="Tap Enter to Send message"
+                  />
+                  <p></p>
+                </div>
+                <i
+                  class="fa fa-microphone"
+                  style="
+                    font-size: 18px;
+                    margin-right: 10px;
+                    color: rgb(35, 119, 245);
+                  "
+                  onclick=""
+                  id="start-btn"
+                ></i>
+
+                <i
+                  class="fa fa-microphone"
+                  style="font-size: 18px; color: red"
+                  id="stop-btn"
+                >
+                </i>
+
+                <div class="chat-bar-icons">
+                  <div class="language-dropdown">
+                    <div class="fa fa-globe"></div>
+                    <div class="language-dropdown-content">
+                      <a onclick="arLang('arabic')">Arabic</a>
+                      <a onclick="frLang('french')">French</a>
+                      <a onclick="enLang('english')">English</a>
+                    </div>
+                  </div>
+
+                  <i
+                    id="chat-icon"
+                    style="color: #333"
+                    class="fa fa-fw fa-send"
+                    onclick="sendButton()"
+                  ></i>
+                </div>
+              </div>
+              <div></div>
+
+              <div id="chat-bar-bottom">
+                <p></p>
+              </div>
+
+              <!--   Room availability input -->
+              <div class="room-availability-input" id="allAv">
+                <button
+                  id="toggleButton"
+                  class="toggle-button"
+                  onclick="toggleAvailability()"
+                >
+                  Room Availability
+                </button>
+
+                <div id="availabilityFields" class="availability-fields">
+                  <label class="availability-label" for="checkInDate"
+                    >Check-in Date:</label
+                  >
+                  <input
+                    class="availability-input"
+                    type="date"
+                    id="checkInDate"
+                  />
+                  <br />
+
+                  <label class="availability-label" for="checkOutDate"
+                    >Check-out Date:</label
+                  >
+
+                  <input
+                    class="availability-input"
+                    type="date"
+                    id="checkOutDate"
+                  />
+                  <br />
+                  <div>
+                    <label>Room Type:</label><br />
+                    <input
+                      type="radio"
+                      id="roomType1"
+                      name="roomType"
+                      value="Deluxe King Room"
+                    />
+                    <label for="roomType1">Deluxe King Room</label><br />
+
+                    <input
+                      type="radio"
+                      id="roomType2"
+                      name="roomType"
+                      value="Deluxe Double/Double Room"
+                    />
+                    <label for="roomType2">Deluxe Double</label><br />
+
+                    <input
+                      type="radio"
+                      id="roomType3"
+                      name="roomType"
+                      value="Junior Suite"
+                    />
+                    <label for="roomType3">Junior Suite</label><br />
+                  </div>
+                  <button
+                    class="availability-button"
+                    onclick="checkRoomAvailability()"
+                  >
+                    Check Availability
+                  </button>
+                  <button
+                    class="availability-Hidebutton"
+                    onclick="HideButton()"
+                  >
+                    Cancel
+                  </button>
+
+                  <p id="availabilityResult" class="availability-result"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const microphoneIcon = document.getElementById("start-btn");
+
+    microphoneIcon.addEventListener("mouseenter", function () {
+      microphoneIcon.classList.add("hover");
+      microphoneIcon.textContent = "Start";
+    });
+
+    microphoneIcon.addEventListener("mouseleave", function () {
+      microphoneIcon.classList.remove("hover");
+      microphoneIcon.textContent = ""; // Set the original icon text here
+    });
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="static/scripts/responses.js"></script>
+  <script src="static/scripts/index.js"></script>
+</html>
